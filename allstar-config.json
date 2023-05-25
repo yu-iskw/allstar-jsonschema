@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "issueFooter": {
+            "type": "string"
+        },
+        "issueLabel": {
+            "type": "string"
+        },
+        "issueRepo": {
+            "type": "string"
+        },
+        "optConfig": {
+            "type": "object",
+            "properties": {
+                "disableRepoOverride": {
+                    "type": "boolean"
+                },
+                "optInRepos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "optOutArchivedRepos": {
+                    "type": "boolean"
+                },
+                "optOutForkedRepos": {
+                    "type": "boolean"
+                },
+                "optOutPrivateRepos": {
+                    "type": "boolean"
+                },
+                "optOutPublicRepos": {
+                    "type": "boolean"
+                },
+                "optOutRepos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "optOutStrategy": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+            ]
+        },
+        "schedule": {
+            "type": "object",
+            "properties": {
+                "days": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "timezone": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "days",
+                "timezone"
+            ]
+        }
+    },
+    "required": [
+    ]
+}
