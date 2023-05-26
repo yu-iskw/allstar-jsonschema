@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "optConfig": {
+      "$ref": "#/definitions/OrgOptConfig"
+    },
+    "action": {
+      "type": "string"
+    },
+    "enforceDefault": {
+      "type": "boolean"
+    },
+    "enforceBranches": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "requireApproval": {
+      "type": "boolean"
+    },
+    "requireCodeOwnerReviews": {
+      "type": "boolean"
+    },
+    "approvalCount": {
+      "type": "integer"
+    },
+    "dismissStale": {
+      "type": "boolean"
+    },
+    "blockForce": {
+      "type": "boolean"
+    },
+    "requireUpToDateBranch": {
+      "type": "boolean"
+    },
+    "requireStatusChecks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StatusCheck"
+      }
+    },
+    "enforceOnAdmins": {
+      "type": "boolean"
+    },
+    "requireSignedCommits": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "optConfig"
+  ],
+  "definitions": {
+    "OrgOptConfig": {
+      "type": "object",
+      "properties": {
+        "optOutStrategy": {
+          "type": "boolean"
+        },
+        "optInRepos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optOutRepos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optOutPrivateRepos": {
+          "type": "boolean"
+        },
+        "optOutPublicRepos": {
+          "type": "boolean"
+        },
+        "optOutArchivedRepos": {
+          "type": "boolean"
+        },
+        "optOutForkedRepos": {
+          "type": "boolean"
+        },
+        "disableRepoOverride": {
+          "type": "boolean"
+        }
+      }
+    },
+    "StatusCheck": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string"
+        },
+        "appID": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

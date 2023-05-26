@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/RuleGroup"
+      }
+    }
+  },
+  "required": [
+    "action",
+    "groups"
+  ],
+  "definitions": {
+    "RepoSelector": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RepoSelector"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "ActionSelector": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "require",
+            "allow",
+            "deny"
+          ]
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "urgent",
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActionSelector"
+          }
+        },
+        "mustPass": {
+          "type": "boolean"
+        },
+        "requireAll": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "method",
+        "priority"
+      ]
+    },
+    "RuleGroup": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "repos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RepoSelector"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Rule"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "rules"
+      ]
+    }
+  }
+}
