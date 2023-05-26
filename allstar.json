@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "optConfig": {
+      "$ref": "#/definitions/OrgOptConfig"
+    },
+    "issueLabel": {
+      "type": "string"
+    },
+    "issueRepo": {
+      "type": "string"
+    },
+    "issueFooter": {
+      "type": "string"
+    },
+    "schedule": {
+      "$ref": "#/definitions/ScheduleConfig"
+    }
+  },
+  "required": [
+    "optConfig"
+  ],
+  "definitions": {
+    "OrgOptConfig": {
+      "type": "object",
+      "properties": {
+        "optOutStrategy": {
+          "type": "boolean"
+        },
+        "optInRepos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optOutRepos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optOutPrivateRepos": {
+          "type": "boolean"
+        },
+        "optOutPublicRepos": {
+          "type": "boolean"
+        },
+        "optOutArchivedRepos": {
+          "type": "boolean"
+        },
+        "optOutForkedRepos": {
+          "type": "boolean"
+        },
+        "disableRepoOverride": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "optOutStrategy"
+      ]
+    },
+    "ScheduleConfig": {
+      "type": "object",
+      "properties": {
+        "timezone": {
+          "type": "string"
+        },
+        "days": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "timezone"
+      ]
+    }
+  }
+}

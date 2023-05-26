@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "optConfig": {
+      "$ref": "#/definitions/OrgOptConfig"
+    },
+    "action": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "threshold": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "optConfig"
+  ],
+  "definitions": {
+    "OrgOptConfig": {
+      "type": "object",
+      "properties": {
+        "optOutStrategy": {
+          "type": "boolean"
+        },
+        "optInRepos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optOutRepos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optOutPrivateRepos": {
+          "type": "boolean"
+        },
+        "optOutPublicRepos": {
+          "type": "boolean"
+        },
+        "optOutArchivedRepos": {
+          "type": "boolean"
+        },
+        "optOutForkedRepos": {
+          "type": "boolean"
+        },
+        "disableRepoOverride": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "optOutStrategy",
+        "optInRepos",
+        "optOutRepos",
+        "optOutPrivateRepos",
+        "optOutPublicRepos",
+        "optOutArchivedRepos",
+        "optOutForkedRepos",
+        "disableRepoOverride"
+      ]
+    }
+  }
+}
